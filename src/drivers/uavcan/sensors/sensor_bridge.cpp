@@ -38,11 +38,12 @@
 #include "sensor_bridge.hpp"
 #include <cassert>
 
-#include "gnss.hpp"
-#include "mag.hpp"
+#include "airspeed.hpp"
 #include "baro.hpp"
-#include "flow.hpp"
 #include "battery.hpp"
+#include "gnss.hpp"
+#include "flow.hpp"
+#include "mag.hpp"
 
 /*
  * IUavcanSensorBridge
@@ -54,6 +55,7 @@ void IUavcanSensorBridge::make_all(uavcan::INode &node, List<IUavcanSensorBridge
 	list.add(new UavcanGnssBridge(node));
 	list.add(new UavcanFlowBridge(node));
 	list.add(new UavcanBatteryBridge(node));
+	list.add(new UavcanAirspeedBridge(node));
 }
 
 /*
@@ -126,6 +128,8 @@ UavcanCDevSensorBridgeBase::publish(const int node_id, const void *report)
 		channel->class_instance = class_instance;
 		DEVICE_LOG("channel %d class instance %d ok", channel->node_id, channel->class_instance);
 
+		DEVICE_LOG("channel %d class instance %d ok", channel->node_id, channel->class_instance);
+
 		channel->orb_advert = orb_advertise_multi(_orb_topic, report, &channel->orb_instance, ORB_PRIO_VERY_HIGH);
 
 		if (channel->orb_advert == nullptr) {
@@ -138,6 +142,8 @@ UavcanCDevSensorBridgeBase::publish(const int node_id, const void *report)
 
 		DEVICE_LOG("channel %d class instance %d ok", channel->node_id, channel->orb_instance);
 	}
+
+	//publish_sensor()
 
 	assert(channel != nullptr);
 
