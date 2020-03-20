@@ -23,4 +23,6 @@ uint8 esc_online_flags					# Bitmask indicating which ESC is online/offline
 # esc_online_flags bit 6 : Set to 1 if ESC6 is online
 # esc_online_flags bit 7 : Set to 1 if ESC7 is online
 
+uint8 esc_armed_flags					# Bitmask indicating which ESC is armed
+
 esc_report[8] esc
