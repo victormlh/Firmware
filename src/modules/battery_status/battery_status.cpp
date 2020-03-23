@@ -114,7 +114,7 @@ private:
 #if BOARD_NUMBER_BRICKS > 1
 		&_battery2,
 #endif
-	}; // End _analogBatteries
+	};
 
 	perf_counter_t	_loop_perf;			/**< loop performance counter */
 
@@ -159,7 +159,7 @@ BatteryStatus::parameter_update_poll(bool forced)
 		_parameter_update_sub.copy(&pupdate);
 
 		// update parameters from storage
-		updateParams();
+		ModuleParams::updateParams();
 	}
 }
 

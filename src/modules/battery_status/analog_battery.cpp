@@ -127,6 +127,4 @@ AnalogBattery::updateParams()
 			param_set_no_notification(_analog_param_handles.a_per_v_old, &_analog_params.a_per_v_old);
 		}
 	}
-
-	Battery::updateParams();
 }

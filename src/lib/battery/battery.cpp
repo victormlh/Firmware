@@ -339,7 +339,5 @@ void Battery::updateParams()
 	param_get(_param_handles.crit_thr, &_params.crit_thr);
 	param_get(_param_handles.emergen_thr, &_params.emergen_thr);
 
-	ModuleParams::updateParams();
-
 	_first_parameter_update = false;
 }
